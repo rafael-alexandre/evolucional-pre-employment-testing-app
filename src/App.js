@@ -1,25 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Students from './screens/Students';
+import Teachers from './screens/Teachers';
+import StudentsRegister from './screens/Students.register';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={styles.mainContainer}>
+        <div className="container">
+          <Switch>
+            <Route path="/" exact={true}>
+              <Students />
+            </Route>
+            <Route path="/students" exact={true}>
+              <Students />
+            </Route>
+            <Route path="/students/register" exact={true}>
+              <StudentsRegister />
+            </Route>
+            <Route path="/teachers" exact={true}>
+              <Teachers />
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
+const styles = {
+  mainContainer: {
+    minHeight: '100vh',
+    paddingTop: '4vh',
+    paddingBottom: '4vh',
+    backgroundColor: '#eee',
+  },
+}
