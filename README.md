@@ -23,9 +23,7 @@ You will also see any lint errors in the console.
 ## Application previews
 
 Students screen with filters and dynamic editing.
-
 ![alt text](https://github.com/rafael-alexandre/evolucional-pre-employment-testing-app/blob/master/previews/students.png)
 
 Register mocked students screen with degree levels.
-
 ![alt text](https://github.com/rafael-alexandre/evolucional-pre-employment-testing-app/blob/master/previews/register-students.png)
