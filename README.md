@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Evolucional - Software Engineer & Tech Leader [Pre-employment testing]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Development test of an application for the management of students and teachers, requested by the company evolucional.com.br as part of the selection process for the vacancy of Software Engineer & Tech Leader.
+
+This application was developed with ReactJS and Node.JS (JSON Server) for Rest API.
 
 # Server-side application
 
