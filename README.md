@@ -14,6 +14,10 @@ First clone the API project [https://github.com/rafael-alexandre/evolucional-pre
 
 In the project directory, you can run:
 
+### `npm install`
+
+To install the dependencies.
+
 ### `npm start`
 
 Runs the app in the development mode.\
