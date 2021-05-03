@@ -15,7 +15,7 @@ class Students extends React.Component {
       degreeId: null,
       classId: null,
       page: 1,
-      nextPage: true,
+      nextPage: false,
       perPage: 10,
     }
   }
@@ -55,7 +55,7 @@ class Students extends React.Component {
           nextPage: false,
         })
       }
-    });
+    })
   }
 
   getDegrees = () => {
@@ -143,7 +143,7 @@ class Students extends React.Component {
           </div>
 
           <div className="col-6 d-flex justify-content-end">
-            <Link to="/students/register" className="btn btn-primary">Register students</Link>
+            <Link to="/students/register" className="btn btn-success">Register</Link>
           </div>
         </div>
 
@@ -153,7 +153,7 @@ class Students extends React.Component {
               <thead>
                 <tr className="table-dark">
                   <th scope="col" style={{ width: 100 }}>#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Student</th>
                   <th scope="col">R.A</th>
                   <th scope="col">Degree</th>
                   <th scope="col">Class</th>

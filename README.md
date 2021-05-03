@@ -33,3 +33,9 @@ Students screen with filters and dynamic editing.
 
 Register mocked students screen with degree levels.
 ![alt text](https://github.com/rafael-alexandre/evolucional-pre-employment-testing-app/blob/master/previews/register-students.png)
+
+Teachers screen with filters and dynamic editing.
+![alt text](https://github.com/rafael-alexandre/evolucional-pre-employment-testing-app/blob/master/previews/teachers.png)
+
+Visualization of students belonging to each degree related to the teacher.
+![alt text](https://github.com/rafael-alexandre/evolucional-pre-employment-testing-app/blob/master/previews/degree-students.png)

@@ -2,6 +2,8 @@ import React from 'react';
 import Dashboard from '../components/Dashboard';
 import Teacher from '../components/Teacher';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Degree from '../components/Degree';
 
 class Teachers extends React.Component {
   constructor() {
@@ -13,6 +15,7 @@ class Teachers extends React.Component {
       degrees: [],
       degreeId: null,
       classId: null,
+      degree: {},
     }
   }
 
@@ -92,11 +95,29 @@ class Teachers extends React.Component {
     this.getTeachers()
   }
 
+  openDegree = (degreeId) => {
+    const { degrees } = this.state
+
+    this.setState({
+      degree: degrees.find(p => p.id === parseInt(degreeId)),
+    })
+  }
+
+  closeDegree = () => {
+    this.setState({
+      degree: {},
+    })
+  }
+
   render() {
-    const { relationships, classes, degrees } = this.state
+    const { relationships, classes, degrees, degree } = this.state
 
     return (
       <Dashboard>
+        {degree?.id ? (
+          <Degree degree={degree} closeDegree={this.closeDegree}></Degree>
+        ) : null}
+
         <div className="row d-flex justify-content-between align-items-end mb-3">
           <div className="col-6 d-flex justify-content-between align-items-end">
             <div className="row" style={{ width: '100%' }}>
@@ -127,6 +148,10 @@ class Teachers extends React.Component {
 
             <button className="btn btn-primary ms-4" onClick={this.search}>Search</button>
           </div>
+
+          <div className="col-6 d-flex justify-content-end">
+            <Link to="/teachers/register" className="btn btn-success disabled">Register</Link>
+          </div>
         </div>
 
         <div className="card">
@@ -135,7 +160,7 @@ class Teachers extends React.Component {
               <thead>
                 <tr className="table-dark">
                   <th scope="col" style={{ width: 100 }}>#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Teacher</th>
                   <th scope="col">Matter</th>
                   <th scope="col">Degrees & classes</th>
                   <th scope="col" style={{ width: 100 }}>Acion</th>
@@ -144,7 +169,7 @@ class Teachers extends React.Component {
 
               <tbody>
                 {relationships.length && classes.length && degrees.length ? relationships.map((relationship, index) => (
-                  <Teacher relationship={relationship} degrees={degrees} classes={classes} key={index}></Teacher>
+                  <Teacher relationship={relationship} degrees={degrees} classes={classes} openDegree={this.openDegree} key={index}></Teacher>
                 )) : (
                   <tr className="table-light">
                     <td colSpan="6" className="text-center">Results not found.</td>

@@ -5,8 +5,9 @@ import {
   Route
 } from "react-router-dom";
 import Students from './screens/Students';
-import Teachers from './screens/Teachers';
 import StudentsRegister from './screens/Students.register';
+import Teachers from './screens/Teachers';
+import TeachersRegister from './screens/Teachers.register';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path="/teachers" exact={true}>
               <Teachers />
+            </Route>
+            <Route path="/teachers/register" exact={true}>
+              <TeachersRegister />
             </Route>
           </Switch>
         </div>

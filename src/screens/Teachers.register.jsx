@@ -4,7 +4,7 @@ import Dashboard from '../components/Dashboard';
 import axios from 'axios';
 import faker from 'faker';
 
-class StudentsRegister extends React.Component {
+class TeachersRegister extends React.Component {
   constructor() {
     super()
 
@@ -133,4 +133,4 @@ class StudentsRegister extends React.Component {
   }
 }
 
-export default StudentsRegister;
+export default TeachersRegister;
