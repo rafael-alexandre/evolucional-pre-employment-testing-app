@@ -2,8 +2,8 @@ import React from 'react';
 import Dashboard from '../components/Dashboard';
 import Teacher from '../components/Teacher';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Degree from '../components/Degree';
+import RegisterTeacher from '../components/RegisterTeacher';
 
 class Teachers extends React.Component {
   constructor() {
@@ -15,17 +15,18 @@ class Teachers extends React.Component {
       degrees: [],
       degreeId: null,
       classId: null,
+      registerModal: false,
       degree: {},
     }
   }
 
   componentDidMount() {
-    this.getTeachers()
+    this.getRelationships()
     this.getDegrees()
     this.getClasses()
   }
 
-  getTeachers = () => {
+  getRelationships = () => {
     axios.get('relationships', {
       params: {
         _expand: [
@@ -79,20 +80,38 @@ class Teachers extends React.Component {
     }
 
     if (classId) {
-      data = data.filter(p =>
-        p.degrees.filter(p =>
-          p.classes.filter(p =>
-            p.classId === parseInt(classId)
-          ).length > 0
-        ).length > 0
-      )
+      data = data.filter((data) => {
+        return data.degrees.filter((degree) => {
+          return degree.classes.filter((e) => {
+            return e.classId === parseInt(classId)
+          }).length > 0
+        }).length > 0
+      })
     }
 
     return data
   }
 
   search = () => {
-    this.getTeachers()
+    this.getRelationships()
+  }
+
+  openRegisterModal = () => {
+    this.setState({
+      registerModal: true,
+    })
+  }
+
+  closeRegisterModal = () => {
+    this.setState({
+      registerModal: false,
+    })
+  }
+
+  registerModalApply = () => {
+    this.setState({
+      registerModal: false,
+    }, this.getRelationships)
   }
 
   openDegree = (degreeId, classes) => {
@@ -119,12 +138,16 @@ class Teachers extends React.Component {
   }
 
   render() {
-    const { relationships, classes, degrees, degree } = this.state
+    const { relationships, classes, degrees, degree, registerModal } = this.state
 
     return (
       <Dashboard>
         {degree?.id ? (
-          <Degree degree={degree} closeDegree={this.closeDegree}></Degree>
+          <Degree degree={degree} close={this.closeDegree}></Degree>
+        ) : null}
+
+        {registerModal ? (
+          <RegisterTeacher apply={this.registerModalApply} close={this.closeRegisterModal}></RegisterTeacher>
         ) : null}
 
         <div className="row d-flex justify-content-between align-items-end mb-3">
@@ -159,7 +182,7 @@ class Teachers extends React.Component {
           </div>
 
           <div className="col-6 d-flex justify-content-end">
-            <Link to="/teachers/register" className="btn btn-success disabled">Register</Link>
+            <button className="btn btn-success" onClick={this.openRegisterModal}>Register</button>
           </div>
         </div>
 
@@ -172,7 +195,6 @@ class Teachers extends React.Component {
                   <th scope="col">Teacher</th>
                   <th scope="col">Matter</th>
                   <th scope="col">Degrees & classes</th>
-                  <th scope="col" style={{ width: 100 }}>Acion</th>
                 </tr>
               </thead>
 

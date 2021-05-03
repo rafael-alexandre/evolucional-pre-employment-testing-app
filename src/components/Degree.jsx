@@ -79,7 +79,7 @@ class Degree extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">{degree.name}</h5>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={this.props.closeDegree}></button>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={this.props.close}></button>
               </div>
 
               <div className="modal-body">
@@ -111,7 +111,7 @@ class Degree extends React.Component {
               </div>
 
               <div className="modal-footer d-flex justify-content-between">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={this.props.closeDegree}>Close</button>
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={this.props.close}>Close</button>
 
                 <div className="d-flex">
                   <button className={'btn btn-' + (page <= 1 ? 'secondary disabled' : 'primary')} onClick={this.prevPage}>Prev</button>

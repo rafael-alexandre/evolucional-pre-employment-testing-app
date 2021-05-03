@@ -49,9 +49,6 @@ class Student extends React.Component {
             ))}
           </ul>
         </td>
-        <td>
-          <button className="btn btn-primary disabled" onClick={this.edit}>Edit</button>
-        </td>
       </tr>
     )
   }
