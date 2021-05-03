@@ -24,6 +24,7 @@ class Degree extends React.Component {
     axios.get('students', {
       params: {
         degreeId: degree.id,
+        classId: degree.classes,
         _expand: [
           'class',
         ],

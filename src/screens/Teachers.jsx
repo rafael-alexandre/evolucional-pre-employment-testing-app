@@ -95,11 +95,20 @@ class Teachers extends React.Component {
     this.getTeachers()
   }
 
-  openDegree = (degreeId) => {
+  openDegree = (degreeId, classes) => {
     const { degrees } = this.state
 
+    const classesId = []
+
+    for (let _class of classes) {
+      classesId.push(_class.classId)
+    }
+
     this.setState({
-      degree: degrees.find(p => p.id === parseInt(degreeId)),
+      degree: {
+        ...degrees.find(p => p.id === parseInt(degreeId)),
+        classes: classesId,
+      },
     })
   }
 

@@ -37,7 +37,7 @@ class Student extends React.Component {
           <ul className="teacher-degrees">
             {relationship?.degrees?.map((degree, index) => (
               <li key={index}>
-                <button className="btn btn-success btn-sm" onClick={() => this.props.openDegree(degree.degreeId)}>
+                <button className="btn btn-success btn-sm" onClick={() => this.props.openDegree(degree.degreeId, degree.classes)}>
                   {degrees.find(p => p.id === degree.degreeId).name}
                 </button>
                 <ul>
